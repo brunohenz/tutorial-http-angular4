@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>Consultar Frete</h1>
+    </div>
+
+     <div class="panel-body">
+        <div class="col-lg-12">
+          <div class="col-lg-3 form-group">
+            <div class="col-lg-12 form-group">
+              <label>Digite seu CEP</label>
+              <input id="Cep" [(ngModel)]='cep' type="text" size="9" maxlength="9" class="form-control"/>
+            </div>
+
+            <div class="col-lg-12 form-group">
+              <input id="btnFrete" value="calcular Frete" class="btn btn-primary form-control" type="submit" (click)='CalcularFrete()' />   
+            </div>
+
+            <div class="col-lg-12 form-group">
+              <a href="http://www.buscacep.correios.com.br/servicos/dnec/index.do" title="Não sei meu CEP" target="_blank" class="link">Não sei meu CEP</a>                     
+            </div>                                    
+          </div>
+
+
+          <div class="col-lg-5">
+              <div class="col-lg-6">            
+                  <div *ngIf="frete">
+                      <p><strong>Entrega Normal</strong></p>
+                      <p>Em até {{frete.PrazoEntrega}} dias úteis</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-lg-4 text-center">
+              <div *ngIf="frete">
+                  <strong> Subtotal Frete R$ {{frete.ValorFrete}} </strong>
+              </div>
+              <div *ngIf="!frete">
+                  <strong> Subtotal Frete CEP não informado</strong>
+              </div>
+          </div>
+      </div>
+     </div>
+
+     <div class="panel-footer">
+        <p>Sistema para Consulta de Frete</p>
+     </div>
+
+  </div>
+</div>
